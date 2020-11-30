@@ -1,4 +1,4 @@
-'''fonction qui crée un tableu vide 15x15, on l`utilise dans les init-fonctions'''
+'''fonction qui crée un tableu vide 15x15, on l`utilise dans init-fonctions'''
 def vide_tableau() :
     res = []
     for i in range(15) :
@@ -6,9 +6,8 @@ def vide_tableau() :
         for j in range(15) :
             res[i].append('')
     return (res)
-
 def init_bonus() :
-  #premièrement on remplit un quart de tableau du bonus, c'est tableau "temp"
+    #premièrement on remplit un quart de tableau du bonus, c'est tableau "temp"
     temp = vide_tableau()
     for k in [[3,0],[11,0],[6,2],[8,2],[7,3],[6,6]] :
         temp[k[0]][k[1]] = 'LD'
@@ -18,15 +17,39 @@ def init_bonus() :
     temp[0][7] = 'MT'
     for k in range(4) :
         temp[1+k][1+k] = 'MD'
-  #et après on le tourne en pi/2 3 fois autoure l'indice [7][7] (centre de tableau)
+    #et après on le tourne en pi/2 3 fois autoure l'indice [7][7] (centre de tableau)
     res = vide_tableau()
     for i in range(15) :
         for j in range (15) :
             if temp[i][j] != '' :
                 res[i][j] = temp[i][j]
-                res[j][-i+7] = temp[i][j]
-                res[-i+7][-j+7] = temp[i][j]
-                res[-j+7][i] = temp[i][j]
+                res[j][-i+14] = temp[i][j]
+                res[-i+14][-j+14] = temp[i][j]
+                res[-j+14][i] = temp[i][j]
+    return (res)
+def ini_jetons() :
+    return (vide_tableau())
+def affiche_jeton(tabl, jetons, init, d) :
+    k = 0
+    res = tabl.copy()
+    bon = init_bonus()
+    jet = list(jetons)
+    while (k < len(jet)) :
+        if (d == 'droit') :
+            i = init[0]
+            j = init[1] + k
+        elif (d =='bas') :
+            i = init[0] + k
+            j = init[1]
+        res[i][j] = jet[k] + '_'
+        k += 1
+    for i in range(15) :
+        for j in range(15) :
+            if res[i][j] == '' :
+                print ('*_' + bon[i][j], end = '')
+            else :
+                print(res[i][j] + bon[i][j], end = '')
+        print('')
     return(res)
-  def ini_jetons() :
-    return (vide_tableau()) 
+#le programme principal
+tableau = affiche_jeton(vide_tableau(), 'jetons', [7,7], 'droit')
