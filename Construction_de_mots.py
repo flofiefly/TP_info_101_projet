@@ -49,6 +49,9 @@ en_table = {0:'I', 3:'O', 11:'E'}
 ll = ['?', '?', '?','?', '?', '?','Q', 'R', 'M']
 print(mot_jouable(mot, ll, en_table))
 
+ll = ['?', '?', '?','?', '?', '?','Q', 'R']
+print(mot_jouable(mot, ll, en_table))
+
 #test de la fonction 'mots_jouable'
 print('test_3 :')
 ll = ['A', 'A', 'B', 'C', 'A']
