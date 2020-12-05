@@ -55,5 +55,4 @@ print(mot_jouable(mot, ll, en_table))
 #test de la fonction 'mots_jouable'
 print('test_3 :')
 ll = ['A', 'A', 'B', 'C', 'A']
-en_table = {}
-print(mots_jouable(dico, ll, en_table))
+print(mots_jouable(dico, ll))
