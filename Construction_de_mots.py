@@ -5,7 +5,7 @@ def generer_dico(nf) :
     return(res)
 
 def mot_jouable(mot, ll, en_table = {}) :
-#on verifie que mot ne derange pas le tableau
+    #on verifie que mot ne derange pas le tableau
     k = 0
     while k < len(en_table) :
         if k in en_table :
@@ -13,7 +13,7 @@ def mot_jouable(mot, ll, en_table = {}) :
                 return(False)
         k += 1
 
-#on verifie que mot peut s'écrire avec les lettre dans le tableau et les jetons
+    #on verifie que mot peut s'écrire avec les lettre dans le tableau et les jetons
     temp = []
     for i in ll :
         temp.append(i)
@@ -28,7 +28,7 @@ def mot_jouable(mot, ll, en_table = {}) :
             return(False)
     return(True)
 
-def mots_jouable(motsfr, ll, en_table = {}) :
+def mots_jouables(motsfr, ll, en_table = {}) :
     res = []
     for i in motsfr :
         if mot_jouable(i, ll, en_table) == True :
