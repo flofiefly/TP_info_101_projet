@@ -1,4 +1,5 @@
 '''valeur d'un mot '''
+from Construction_de_mots.py import mots_jouables
 def valeur_mot(mot, dico) :
     res = 0
     for l in list(mot) :
