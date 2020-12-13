@@ -15,7 +15,7 @@ def pioche(x, sac) :
     res = []
     for i in range(x) :
         n = rd.randint(0, len(sac)-1)
-        res.append(sac.pop(n))
+        res.append(sac.pop(n)) #pop nous permet de tenir et rendre l'élément d'un coup
     return(res)
 def completer_main(main, sac) :
     x = 7 - len(main)
@@ -25,6 +25,7 @@ def completer_main(main, sac) :
     for i in temp :
         main.append(i)
 def echanger(jetons, main, sac) :
+    #premièrement on verifit 
     if len(jetons) > len(sac) :
         return(False)
     for j in jetons :
