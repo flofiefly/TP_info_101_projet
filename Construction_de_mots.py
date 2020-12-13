@@ -6,12 +6,9 @@ def generer_dico(nf) :
 
 def mot_jouable(mot, ll, en_table = {}) :
     #on verifie que mot ne derange pas le tableau
-    k = 0
-    while k < len(en_table) :
-        if k in en_table :
-            if en_table[k] != list(mot)[k] :
-                return(False)
-        k += 1
+    for k in en_table :
+        if (en_table[k] != list(mot)[k]) and(en_table[k] != '') :
+            return(False)
 
     #on verifie que mot peut s'écrire avec les lettre dans le tableau et les jetons
     temp = []
@@ -55,4 +52,4 @@ print(mot_jouable(mot, ll, en_table))
 #test de la fonction 'mots_jouable'
 print('test_3 :')
 ll = ['A', 'A', 'B', 'C', 'A']
-print(mots_jouable(dico, ll))
+print(mots_jouables(dico, ll))
