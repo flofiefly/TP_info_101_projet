@@ -1,4 +1,4 @@
-'''fonction qui crée un tableu vide 15x15, on l`utilise dans init-fonctions'''
+'''Le plateau de jeu'''
 def vide_tableau() :
     res = []
     for i in range(15) :
@@ -18,6 +18,7 @@ def init_bonus() :
     for k in range(4) :
         temp[1+k][1+k] = 'MD'
     #et après on le tourne en pi/2 3 fois autoure l'indice [7][7] (centre de tableau)
+    #j'ai pas vu qu'on avait un ficher soutenu pour cet exercice ;^)
     res = vide_tableau()
     for i in range(15) :
         for j in range (15) :
@@ -27,9 +28,9 @@ def init_bonus() :
                 res[-i+14][-j+14] = temp[i][j]
                 res[-j+14][i] = temp[i][j]
     return (res)
-def ini_jetons() :
+def init_jetons() :
     return (vide_tableau())
-def affiche_jeton(tabl, jetons, init, d) :
+def affiche_jetons(tabl, jetons, init, d) :
     k = 0
     res = tabl.copy()
     bon = init_bonus()
@@ -52,4 +53,12 @@ def affiche_jeton(tabl, jetons, init, d) :
         print('')
     return(res)
 #le programme principal
-tableau = affiche_jeton(vide_tableau(), 'jetons', [7,7], 'droit')
+tableau = affiche_jetons(vide_tableau(), 'jetons', [7,7], 'droit')
+print('')
+for i in init_bonus() :
+    for j in i :
+        if j == '' :
+            print ('__', end = '')
+        else :
+            print(j, end = '')
+    print('')
