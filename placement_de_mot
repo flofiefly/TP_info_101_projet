@@ -1,0 +1,47 @@
+'''Placement de mot'''
+def lire_coords() :
+    [i,j] = input().split()
+    while [i,j] != ['',''] :
+        [i,j] = input().split()
+def tester_placement(plateau,i,j,dir,mot) :
+    l = list(mot)
+    n = len(mot)
+    if dir == 'droit' :
+        if j + n > 15 :
+            return(False)
+        k = 0
+        while (k < n) :
+            if (plateau[i][j+k] != l[k]) and (plateau[i][j+k] != '') :
+                return(False)
+    elif dir == 'bas' :
+        if i + n > 15 :
+            return(False)
+        k = 0
+        while (k < n) :
+            if (plateau[i+k][j] != l[k]) and (plateau[i+k][j] != '') :
+                return(False)
+def placer_mot(plateau,lm,mot,i,j,dir) :
+    if not tester_placement(plateau,i,j,dir,mot) :
+        return(False)
+    n = len(mot)
+    if dir == 'droit' :
+        for k in range(n) :
+            en_table.append(plateau[i][j+k])
+        if not (mot_jouable(mot, lm, en_table)) : 
+            return(False)
+        for k in range(n) :
+            l = list(mot)[k]
+            if en_table[k] != '' :
+                lm.remove(l)
+                plateau[i][j+k] = l
+    elif dir == 'bas' :
+        for k in range(n) :
+            en_table.append(plateau[i+k][j])
+        if not (mot_jouable(mot, lm, en_table)) : 
+            return(False)
+        for k in range(n) :
+            l = list(mot)[k]
+            if en_table[k] != '' :
+                lm.remove(l)
+                plateau[i+k][j] = l
+    return(True)
